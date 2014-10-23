@@ -1,42 +1,46 @@
 Alfred-MyHexo
 =============
 
-Alfred Workflow for manage Hexo project
+Alfred Workflow for manage Hexo project.
 
-![screenshot](http://cl.ly/Y9bo/Image%202014-10-22%20at%2012.27.59%20%E5%8D%88%E5%89%8D.png)
+![screenshot](http://cl.ly/YBVK/Image%202014-10-24%20at%202.55.50%20%E5%8D%88%E5%89%8D.png)
 
 # Workflow to manage your Hexo blog
 
 This workflow has attracted a command for managing your Hexo blog.
 
 ## Setup
-Input your info to some variable and Search Scope.
+Input your info to some variable and 'source' folder.
 
-### 'hexo' Script Filter
-* dir: Path of your hexo project folder
-
-### '/bin/bash' Script (Next to 'hs' Script Filter)
+### '/bin/bash' Script action (Next to 'hx' Script Filter)
 * dir: Path of your hexo project folder
 * editor: Name of your favorite editor
+* terminal: Name of your favorite Terminal emulator
 * url: URL of your site
 
-### 'h:s' & 'h:f' File Filter
+### 'Open File' action (Next to 'h:s' & 'h:f' File Filter)
 Add your 'source' folder to Search Scope.
 
 ## Usage
-| Input      | Action                               | Amendment           |
-| ---------- | ------------------------------------ | ------------------- |
-| hexo       | Open Hexo projext folder in terminal |                     |
-| hexod      | Deploy  Hexo                         | with generate       |
-| hexos      | Run local server                     |                     |
-| hexoc      | Delete all generated files           |                     |
-| hexog      | Generate contents                    |                     |
-| hs n (arg) | Create new post                      | arg to title        |
-| hs d (arg) | Create new draft                     | arg to title        |
-| hs p       | Publish drafts                       | only 'status: p'    |
-| hs d       | Unpublish posts                      | only 'status: d'    |
-| hs o       | Open website                         |                     |
-| hs conf    | Open '_config.yml'                   | with default editor |
+| Alfred text     | Commands                                           | Options (<*>:Required/[*],-*,--*:Optional)        |
+| --------------- | -------------------------------------------------- | ------------------------------------------------- |
+| hx, hxt         | Open Hexo project folder in Terminal               |                                                   |
+| hxn             | Create new article                                 | &lt;title&gt;                                     |
+| hxb             | Create draft                                       | &lt;title&gt;                                     |
+| hxp             | Publish drafts  ('status: p'  in 'drafts'  folder) |                                                   |
+| hxu             | Unpublish article  ('status: d' in 'posts' folder) |                                                   |
+| hxo             | Open website in default brower                     |                                                   |
+| hxconf          | Open '_config,yml'  (with default editor)          |                                                   |
+| hxh             | Reference to Help                                  |                                                   |
+| hxt g(generate) | Generate contents                                  | -d, --deploy, -w, --watch                         |
+| hxt s(server)   | Run local server (at http://localhost:4000/)       | -p, --port, -s, --static, -l, --log, -d, --drafts |
+| hxt d(deploy)   | Deploy contents                                    | --setup, -g, --generate, -m, --message            |
+| hxt r(render)   | Renders files                                      | <file1> [file2] -o, --output                      |
+| hxt m(migrate)  | Migrates content from other blog systems           | &lt;type&gt;                                      |
+| hxt c(clean)    | Delete all generated files                         |                                                   |
+| hxt l(list)     | Lists all routes                                   | &lt;type&gt;                                      |
+| hxt v(version)  | Displays version information                       |                                                   |
+
 
 ## Hexo custom arguments
 ### pid
