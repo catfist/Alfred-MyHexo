@@ -22,7 +22,7 @@ Input your info to some variable and 'source' folder.
 Add your 'source' folder to Search Scope.
 
 ## Usage
-| Alfred text     | Commands                                           | Options (<*>:Required/[*],-*,--*:Optional)        |
+| Alfred text     | Commands                                           | Options (&lt;\*&gt;:Required / [\*],-\*,--\*:Optional)        |
 | --------------- | -------------------------------------------------- | ------------------------------------------------- |
 | hx, hxt         | Open Hexo project folder in Terminal               |                                                   |
 | hxn             | Create new article                                 | &lt;title&gt;                                     |
@@ -35,7 +35,7 @@ Add your 'source' folder to Search Scope.
 | hxt g(generate) | Generate contents                                  | -d, --deploy, -w, --watch                         |
 | hxt s(server)   | Run local server (at http://localhost:4000/)       | -p, --port, -s, --static, -l, --log, -d, --drafts |
 | hxt d(deploy)   | Deploy contents                                    | --setup, -g, --generate, -m, --message            |
-| hxt r(render)   | Renders files                                      | <file1> [file2] -o, --output                      |
+| hxt r(render)   | Renders files                                      | &lt;file1&gt; [file2] -o, --output                      |
 | hxt m(migrate)  | Migrates content from other blog systems           | &lt;type&gt;                                      |
 | hxt c(clean)    | Delete all generated files                         |                                                   |
 | hxt l(list)     | Lists all routes                                   | &lt;type&gt;                                      |
