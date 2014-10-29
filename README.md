@@ -3,7 +3,7 @@ Alfred-MyHexo
 
 Alfred Workflow for manage Hexo project.
 
-![screenshot](http://cl.ly/YBVK/Image%202014-10-24%20at%202.55.50%20%E5%8D%88%E5%89%8D.png)
+![screenshot](http://cl.ly/YGYn/Image%202014-10-29%20at%209.42.47%20%E5%8D%88%E5%BE%8C.png)
 
 # Workflow to manage your Hexo blog
 
