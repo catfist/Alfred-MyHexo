@@ -1,0 +1,851 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>catfist.myhexo.com</string>
+	<key>category</key>
+	<string>Productivity</string>
+	<key>connections</key>
+	<dict>
+		<key>1697C3F6-ADE0-4B3F-95C2-15C15DCB5163</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>AC3ECA5D-4D0C-418C-ABC2-B45A1EC4D766</string>
+				<key>modifiers</key>
+				<integer>262144</integer>
+				<key>modifiersubtext</key>
+				<string>Run!: {query}</string>
+			</dict>
+		</array>
+		<key>2A1E01C4-9A99-43BC-AD06-EE910DA3C2B6</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>DD3E0903-40EE-4C9B-BF9D-99238CB3EABC</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>334DA4E7-8521-45F7-85A9-0C733E965577</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>FB8A58BE-B0A8-41C9-8FE4-CCFD9477999F</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>8EBA7DCB-3C86-42B3-9D6C-DA6314E4FDE3</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>76E9DEFC-F9B9-4BD7-AC6B-EB0AA63BDC11</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>2A1E01C4-9A99-43BC-AD06-EE910DA3C2B6</string>
+				<key>modifiers</key>
+				<integer>262144</integer>
+				<key>modifiersubtext</key>
+				<string>Copy Markdown link</string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>C9CAE2DD-5715-4201-B5FF-F4417DC045A8</string>
+				<key>modifiers</key>
+				<integer>131072</integer>
+				<key>modifiersubtext</key>
+				<string>Open URL in defaut browser</string>
+			</dict>
+		</array>
+		<key>AC3ECA5D-4D0C-418C-ABC2-B45A1EC4D766</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>6A5EBFC3-408C-4AEB-960E-A3FDE059BA61</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>AC73E2A0-3892-4539-82F7-7FDE18C0DB7D</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>76E9DEFC-F9B9-4BD7-AC6B-EB0AA63BDC11</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>2A1E01C4-9A99-43BC-AD06-EE910DA3C2B6</string>
+				<key>modifiers</key>
+				<integer>262144</integer>
+				<key>modifiersubtext</key>
+				<string>Copy Markdown link</string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>C9CAE2DD-5715-4201-B5FF-F4417DC045A8</string>
+				<key>modifiers</key>
+				<integer>131072</integer>
+				<key>modifiersubtext</key>
+				<string>Open URL in defaut browser</string>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>catfist</string>
+	<key>description</key>
+	<string>Manage Hexo project</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>MyHexo</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>126</integer>
+				<key>keyword</key>
+				<string>hx</string>
+				<key>runningsubtext</key>
+				<string>Please wait...</string>
+				<key>script</key>
+				<string>read cmd arg &lt;&lt;&lt; "{query}"
+
+case "$cmd" in
+  "" )
+    cmd=t
+    t="Input command"
+    st="If no commands, open Hexo project folder in Terminal"
+  ;;
+  "h"   )
+    t="Reference to Help"
+    st="or input some option"
+  ;;
+  "b" )
+    t="Create draft"
+    st="title: ${arg}"
+  ;;
+  "n" )
+    t="Create new article"
+    st="title: ${arg}"
+  ;;
+  "p" )
+    t="Publish drafts"
+    st="\"status: p\" in \"drafts\" folder"
+  ;;
+  "u" )
+    t="Unpublish article"
+    st="\"status: d\" in \"posts\" folder"
+  ;;
+  "o" )
+    t="Open website"
+    st="Open in brower"
+  ;;
+  "conf" )
+    t="Open '_config,yml'"
+    st="with default editor"
+  ;;
+  "dg"|"gd" )
+    cmd="dg"
+    t="Generate and Deploy contents"
+    st="No options"
+  ;;
+  "g"|"generate" )
+    t="Generate contents"
+    st="Options: -d, --deploy, -w, --watch"
+  ;;
+  "s"|"server" )
+    t="Run local server (at http://localhost:4000/)"
+    st="Options: -p, --port, -s, --static, -l, --log, -d, --drafts"
+  ;;
+  "d"|"deploy" )
+    t="Deploy contents"
+    st="Options: --setup, -g, --generate, -m, --message"
+  ;;
+  "r"|"render" )
+    cmd="render"
+    t="Renders files"
+    st="Options:  &amp;lt;file1&amp;gt; [file2] -o, --output"
+  ;;
+  "m"|"migrate" )
+    cmd="migrate"
+    t="Migrates content from other blog systems"
+    st="Options: &amp;lt;type&amp;gt;"
+  ;;
+  "c"|"clean" )
+    cmd="clean"
+    t="Delete all generated files"
+    st="No options"
+  ;;
+  # Replaced or unassumed commands
+  # "l"|"list" )
+  #   cmd="list"
+  #   t="Lists all routes"
+  #   st="Options: &amp;lt;type&amp;gt;"
+  # ;;
+  # "v"|"version" )
+  #   cmd="version"
+  #   t="Displays version information"
+  #   st="No options"
+  # ;;
+  # "init" )
+  #   t="Initializes a website"
+  #   st="Options: [folder]"
+  # ;;
+  # "new" )
+  #   t="Creates a new article"
+  #   st="Options: [layout] &amp;lt;title&amp;gt;"
+  # ;;
+  # "p"|"publish" )
+  #   t="Publishes a draft"
+  #   st="Options: [layout] &amp;lt;filename&amp;gt;"
+  # ;;
+  "tag" )
+    t="Search Hexo existing Tags or Categories"
+    st="Input a Tags or Categories"
+  ;;
+  *   )
+    t="Undefined command"
+    st="Reference to Help: (hexo)h"
+  ;;
+esac
+
+if [ "$cmd" = tag -a -n "$arg" ];then
+
+# Path of your hexo project folder
+dir=`sed -n 2p Config | sed "s%~%$HOME%"`
+
+cd $dir/source/_posts
+q=$arg
+IFS=$'\n'
+
+tags=()
+while read tag
+  do tags+=("$tag")
+done &lt; &lt;(
+  for file in `ls`
+    do sed '/^---$/q' "$file" | grep '^- ' | sed 's/^- //'
+  done | sort -u)
+
+cat &lt;&lt; EOB
+&lt;?xml version="1.0"?&gt;
+    &lt;items&gt;
+EOB
+
+for i in `echo "${tags[*]}" | grep -i "$q"`
+do
+  i=`echo "${i}" | sed -e 's/&amp;/\&amp;amp;/g' -e 's/&lt;/\&amp;lt;/g' -e 's/&gt;/\&amp;gt;/g' -e "s/'/\&amp;apos;/g" -e 's/"/\&amp;quot;/g'`
+  cat &lt;&lt; EOB
+&lt;item uid="${i}" arg="tag ${i}" valid="YES" &gt;
+    &lt;title&gt;(^) Copy: ${i}&lt;/title&gt;
+&lt;/item&gt;
+EOB
+done
+
+echo "&lt;/items&gt;"
+
+else
+
+cat &lt;&lt; EOB
+&lt;?xml version="1.0"?&gt;
+  &lt;items&gt;
+    &lt;item uid="hexo" arg="$cmd $arg" valid="YES" &gt;
+      &lt;title&gt;(^) Hexo: ${t}&lt;/title&gt;
+      &lt;subtitle&gt;${st}&lt;/subtitle&gt;
+      &lt;subtitle mod="ctrl"&gt;Enter to act&lt;/subtitle&gt;
+    &lt;/item&gt;
+  &lt;/items&gt;
+EOB
+
+fi</string>
+				<key>subtext</key>
+				<string>Manage Hexo projext</string>
+				<key>title</key>
+				<string>Alfred MyHexo</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>1697C3F6-ADE0-4B3F-95C2-15C15DCB5163</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>output</key>
+				<integer>0</integer>
+				<key>removeextension</key>
+				<false/>
+				<key>sticky</key>
+				<false/>
+				<key>text</key>
+				<string>{query}</string>
+				<key>title</key>
+				<string>result</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>6A5EBFC3-408C-4AEB-960E-A3FDE059BA61</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>126</integer>
+				<key>script</key>
+				<string>dir=`sed -n 2p Config | sed "s%~%$HOME%"`
+editor=`sed -n 5p Config`
+terminal=`sed -n 8p Config`
+url=`sed -n 11p Config`
+PATH=$PATH:/usr/local/bin
+q="{query}"
+read cmd arg &lt;&lt;&lt; "$q"
+
+cd $dir
+
+Create () {
+file="${savedir}${today}${title}.md"
+cat &lt;&lt; EOB &gt; "$file"
+title: $arg
+date: $date
+pid: $key
+status: $status
+tags:
+- 
+---
+EOB
+open -a $editor "$file"
+echo -n "Created: \"$title\""
+}
+
+case "$cmd" in
+  "t" )
+    open -a $terminal $dir
+    echo "Openen: Project folder in terminal"
+  ;;
+  [nb] )
+    title=`echo "$arg" | sed -e 's/ /-/g' -e 's/[\.\/]//g'`
+    key=`md5 -qs "$title"`
+    if [ $cmd = n ];then
+      savedir=source/_posts/
+      date="`date '+%Y-%m-%d %H:%M'`"
+      today="`date '+%Y-%m-%d'`-"
+      status=p
+    else
+      savedir=source/_drafts/
+      date=""
+      today=""
+      status=d
+    fi
+    if [ -z $arg ];then
+      echo -n "ERROR: Input title"
+    else
+      Create
+    fi
+  ;;
+  "p" )
+    cd source/_drafts
+    num=`grep -l '^status: p$' *.md | wc -l`
+    for file in `grep -l '^status: p$' *.md`
+    do
+    title=`grep -m1 'title:' $file | cut -c 8- | sed -e 's/ /-/g' -e 's/[\.\/]//g'`
+    cat $file | (rm $file; sed -e "s/^date: .*$/date: `date '+%Y-%m-%d %H:%M'`/" &gt; $file)
+    mv $file ../_posts/`date '+%Y-%m-%d'`-$title.md
+    done
+    echo -n "Published: $num articles"
+  ;;
+  "u" )
+    cd source/_posts
+    num=`grep -l '^status: d$' *.md | wc -l`
+    for file in `grep -l '^status: d$' *.md`
+    do
+    name=`echo $file | cut -c 12-`
+    cat $file | (rm $file; sed 's/^\(date: \).*$/\1/' &gt; $file)
+    mv $file ../_drafts/$name
+    done
+    echo -n "Unpublished: $num articles"
+  ;;
+  "o" )
+    open $url
+    echo -n "Opened: Website"
+  ;;
+  "conf" )
+    open _config.yml
+    echo -n "Opened: '_config.yml'"
+  ;;
+  "h" )
+    open https://github.com/catfist/Alfred-MyHexo
+    echo -n "Opened: Github project page"
+  ;;
+  "g"|"generate"|"d"|"deploy"|"render"|"migrate"|"clean" )
+    hexo $q --silent
+    echo -n "Done: hexo ${q}"
+  ;;
+  "s"|"server" )
+    tmp=/tmp/$$myhexoterm
+    {
+    echo "#!/bin/bash" &gt; ${tmp}
+    echo "cd $dir" &gt;&gt; ${tmp}
+    echo "hexo $q" &gt;&gt; ${tmp}
+    chmod +x ${tmp}
+    } &amp;&amp; {
+    open -a $terminal ${tmp}
+    } &amp;&amp; {
+    sleep 5
+    rm ${tmp}
+    echo -n "Hexo server is running"
+    }
+  ;;
+  "dg" )
+    hexo d -g --silent
+    open $url
+    echo "Contents Deployed"
+  ;;
+  "tag" )
+    echo "$arg" | pbcopy
+    echo "Copied: $arg"
+  ;;
+esac</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>AC3ECA5D-4D0C-418C-ABC2-B45A1EC4D766</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>anchorfields</key>
+				<true/>
+				<key>daterange</key>
+				<integer>0</integer>
+				<key>fields</key>
+				<array>
+					<dict>
+						<key>field</key>
+						<string>kMDItemDisplayName</string>
+						<key>not</key>
+						<false/>
+						<key>split</key>
+						<true/>
+						<key>value</key>
+						<string>{query}</string>
+						<key>words</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>field</key>
+						<string>kMDItemAlternateNames</string>
+						<key>not</key>
+						<false/>
+						<key>split</key>
+						<true/>
+						<key>value</key>
+						<string>{query}</string>
+						<key>words</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>field</key>
+						<string>kMDItemFinderComment</string>
+						<key>not</key>
+						<false/>
+						<key>split</key>
+						<true/>
+						<key>value</key>
+						<string>{query}</string>
+						<key>words</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>field</key>
+						<string>kMDItemTextContent</string>
+						<key>not</key>
+						<false/>
+						<key>split</key>
+						<true/>
+						<key>value</key>
+						<string>{query}</string>
+						<key>words</key>
+						<true/>
+					</dict>
+				</array>
+				<key>includesystem</key>
+				<false/>
+				<key>keyword</key>
+				<string>h:s</string>
+				<key>scopes</key>
+				<array>
+					<string>~/heroku/wbtmiu.herokuapp.com/source/_posts</string>
+				</array>
+				<key>subtext</key>
+				<string>'_posts' and '_drafts'</string>
+				<key>title</key>
+				<string>Search articles</string>
+				<key>types</key>
+				<array/>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.filefilter</string>
+			<key>uid</key>
+			<string>8EBA7DCB-3C86-42B3-9D6C-DA6314E4FDE3</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict/>
+			<key>type</key>
+			<string>alfred.workflow.action.openfile</string>
+			<key>uid</key>
+			<string>76E9DEFC-F9B9-4BD7-AC6B-EB0AA63BDC11</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>123</integer>
+				<key>script</key>
+				<string># Change each variables to suit your '_config.yml'.
+
+baseurl=`sed -n 11p Config`
+
+file="{query}"
+title=`grep -m1 '^title' $file | cut -c 8-`
+date=`grep -m1 '^date' $file | sed 's/-/\//g' | cut -c 7-16`
+pid=`grep -m1 '^pid' $file | sed 's/^pid: //'`
+link="[${title} | 豆腐メンタルは崩れない](${baseurl}${date}/${pid})"
+
+echo -n "${link}"</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>2A1E01C4-9A99-43BC-AD06-EE910DA3C2B6</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>DD3E0903-40EE-4C9B-BF9D-99238CB3EABC</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>123</integer>
+				<key>script</key>
+				<string># Change each variables to suit your '_config.yml'.
+
+baseurl=`sed -n 11p Config`
+
+file="{query}"
+date=`grep -m1 '^date' $file | sed 's/-/\//g' | cut -c 7-16`
+pid=`grep -m1 '^pid' $file | sed 's/^pid: //'`
+url="${baseurl}${date}/${pid}"
+
+open ${url}</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>C9CAE2DD-5715-4201-B5FF-F4417DC045A8</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>anchorfields</key>
+				<true/>
+				<key>daterange</key>
+				<integer>0</integer>
+				<key>fields</key>
+				<array>
+					<dict>
+						<key>field</key>
+						<string>kMDItemDisplayName</string>
+						<key>not</key>
+						<false/>
+						<key>split</key>
+						<true/>
+						<key>value</key>
+						<string>{query}</string>
+						<key>words</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>field</key>
+						<string>kMDItemAlternateNames</string>
+						<key>not</key>
+						<false/>
+						<key>split</key>
+						<true/>
+						<key>value</key>
+						<string>{query}</string>
+						<key>words</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>field</key>
+						<string>kMDItemFinderComment</string>
+						<key>not</key>
+						<false/>
+						<key>split</key>
+						<true/>
+						<key>value</key>
+						<string>{query}</string>
+						<key>words</key>
+						<true/>
+					</dict>
+				</array>
+				<key>includesystem</key>
+				<false/>
+				<key>keyword</key>
+				<string>h:f</string>
+				<key>scopes</key>
+				<array>
+					<string>~/heroku/wbtmiu.herokuapp.com/source/_posts</string>
+				</array>
+				<key>title</key>
+				<string>Find articles by title</string>
+				<key>types</key>
+				<array/>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.filefilter</string>
+			<key>uid</key>
+			<string>AC73E2A0-3892-4539-82F7-7FDE18C0DB7D</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>hxsetup</string>
+				<key>subtext</key>
+				<string>Run at first</string>
+				<key>text</key>
+				<string>Open Config file</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>334DA4E7-8521-45F7-85A9-0C733E965577</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>126</integer>
+				<key>script</key>
+				<string>cat &lt;&lt; EOB &gt; Config
+# Path of your hexo project folder
+~/heroku/wbtmiu.herokuapp.com
+
+# Your favorite editor
+FoldingText
+
+# Your favorite Terminal emulator
+iterm
+
+# Your site URL
+http://wbtmiu.herokuapp.com
+EOB
+
+open Config</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>FB8A58BE-B0A8-41C9-8FE4-CCFD9477999F</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string># Workflow to manage your Hexo blog
+This workflow has attracted a command for managing your Hexo blog.
+
+## Setup
+Input your info to some variable and Search Scope.
+
+### 'hexo' Script Filter
+* dir: Path of your hexo project folder
+
+### '/bin/bash' Script (Next to 'hs' Script Filter)
+* dir: Path of your hexo project folder
+* editor: Name of your favorite editor
+* url: URL of your site
+
+### 'h:s' &amp; 'h:f' File Filter
+Add your 'source' folder to Search Scope.
+
+## Usage
+hexo:
+Open Hexo projext folder in terminal
+
+hexod:
+Deploy Hexo (with generate)
+
+hexos:
+Run local server:
+
+hexoc:
+Delete all generated files:
+
+hexog:
+Generate contents:
+
+hs n (arg):
+Create new post (arg to title)
+
+hs d (arg):
+Create new draft (arg to title)
+
+hs p:
+Publish drafts (only 'status: p')
+
+hs d:
+Unpublish posts (only 'status: d')
+
+hs o:
+Open website
+
+hs conf:
+Open '_config.yml' (with default editor)
+
+## Hexo custom arguments
+### pid
+It is generated by md5 hash function from the title. You can be included in the permalink.
+
+### status
+It can be used to manage the public state.</string>
+	<key>uidata</key>
+	<dict>
+		<key>1697C3F6-ADE0-4B3F-95C2-15C15DCB5163</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+		<key>2A1E01C4-9A99-43BC-AD06-EE910DA3C2B6</key>
+		<dict>
+			<key>ypos</key>
+			<real>250</real>
+		</dict>
+		<key>334DA4E7-8521-45F7-85A9-0C733E965577</key>
+		<dict>
+			<key>ypos</key>
+			<real>490</real>
+		</dict>
+		<key>6A5EBFC3-408C-4AEB-960E-A3FDE059BA61</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+		<key>76E9DEFC-F9B9-4BD7-AC6B-EB0AA63BDC11</key>
+		<dict>
+			<key>ypos</key>
+			<real>130</real>
+		</dict>
+		<key>8EBA7DCB-3C86-42B3-9D6C-DA6314E4FDE3</key>
+		<dict>
+			<key>ypos</key>
+			<real>130</real>
+		</dict>
+		<key>AC3ECA5D-4D0C-418C-ABC2-B45A1EC4D766</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+		<key>AC73E2A0-3892-4539-82F7-7FDE18C0DB7D</key>
+		<dict>
+			<key>ypos</key>
+			<real>370</real>
+		</dict>
+		<key>C9CAE2DD-5715-4201-B5FF-F4417DC045A8</key>
+		<dict>
+			<key>ypos</key>
+			<real>370</real>
+		</dict>
+		<key>DD3E0903-40EE-4C9B-BF9D-99238CB3EABC</key>
+		<dict>
+			<key>ypos</key>
+			<real>250</real>
+		</dict>
+		<key>FB8A58BE-B0A8-41C9-8FE4-CCFD9477999F</key>
+		<dict>
+			<key>ypos</key>
+			<real>490</real>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string>https://github.com/catfist/Alfred-MyHexo</string>
+</dict>
+</plist>
