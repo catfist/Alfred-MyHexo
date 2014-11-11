@@ -120,6 +120,31 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>output</key>
+				<integer>0</integer>
+				<key>removeextension</key>
+				<false/>
+				<key>sticky</key>
+				<false/>
+				<key>text</key>
+				<string>{query}</string>
+				<key>title</key>
+				<string>result</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>6A5EBFC3-408C-4AEB-960E-A3FDE059BA61</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>argumenttype</key>
 				<integer>1</integer>
 				<key>escaping</key>
@@ -297,31 +322,6 @@ fi</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>lastpathcomponent</key>
-				<false/>
-				<key>onlyshowifquerypopulated</key>
-				<false/>
-				<key>output</key>
-				<integer>0</integer>
-				<key>removeextension</key>
-				<false/>
-				<key>sticky</key>
-				<false/>
-				<key>text</key>
-				<string>{query}</string>
-				<key>title</key>
-				<string>result</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.notification</string>
-			<key>uid</key>
-			<string>6A5EBFC3-408C-4AEB-960E-A3FDE059BA61</string>
-			<key>version</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>escaping</key>
 				<integer>126</integer>
 				<key>script</key>
@@ -410,7 +410,7 @@ case "$cmd" in
     echo -n "Opened: Github project page"
   ;;
   "g"|"generate"|"d"|"deploy"|"render"|"migrate"|"clean" )
-    hexo $q --silent
+    hexo $q &gt;&amp; /dev/null
     echo -n "Done: hexo ${q}"
   ;;
   "s"|"server" )
@@ -429,7 +429,7 @@ case "$cmd" in
     }
   ;;
   "dg" )
-    hexo d -g --silent
+    hexo d -g &gt;&amp; /dev/null
     open $url
     echo "Contents Deployed"
   ;;
@@ -447,6 +447,16 @@ esac</string>
 			<string>AC3ECA5D-4D0C-418C-ABC2-B45A1EC4D766</string>
 			<key>version</key>
 			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict/>
+			<key>type</key>
+			<string>alfred.workflow.action.openfile</string>
+			<key>uid</key>
+			<string>76E9DEFC-F9B9-4BD7-AC6B-EB0AA63BDC11</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -532,13 +542,18 @@ esac</string>
 		</dict>
 		<dict>
 			<key>config</key>
-			<dict/>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+			</dict>
 			<key>type</key>
-			<string>alfred.workflow.action.openfile</string>
+			<string>alfred.workflow.output.clipboard</string>
 			<key>uid</key>
-			<string>76E9DEFC-F9B9-4BD7-AC6B-EB0AA63BDC11</string>
+			<string>DD3E0903-40EE-4C9B-BF9D-99238CB3EABC</string>
 			<key>version</key>
-			<integer>1</integer>
+			<integer>0</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -570,21 +585,6 @@ echo -n "${link}"</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>autopaste</key>
-				<false/>
-				<key>clipboardtext</key>
-				<string>{query}</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.clipboard</string>
-			<key>uid</key>
-			<string>DD3E0903-40EE-4C9B-BF9D-99238CB3EABC</string>
-			<key>version</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>escaping</key>
 				<integer>123</integer>
 				<key>script</key>
@@ -595,7 +595,7 @@ baseurl=`sed -n 11p Config`
 file="{query}"
 date=`grep -m1 '^date' $file | sed 's/-/\//g' | cut -c 7-16`
 pid=`grep -m1 '^pid' $file | sed 's/^pid: //'`
-url="${baseurl}${date}/${pid}"
+url="${baseurl}/${date}/${pid}"
 
 open ${url}</string>
 				<key>type</key>
