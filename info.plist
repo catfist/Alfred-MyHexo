@@ -154,155 +154,7 @@
 				<key>runningsubtext</key>
 				<string>Please wait...</string>
 				<key>script</key>
-				<string>read cmd arg &lt;&lt;&lt; "{query}"
-
-case "$cmd" in
-  "" )
-    cmd=t
-    t="Input command"
-    st="If no commands, open Hexo project folder in Terminal"
-  ;;
-  "h"   )
-    t="Reference to Help"
-    st="or input some option"
-  ;;
-  "b" )
-    t="Create draft"
-    st="title: ${arg}"
-  ;;
-  "n" )
-    t="Create new article"
-    st="title: ${arg}"
-  ;;
-  "p" )
-    t="Publish drafts"
-    st="\"status: p\" in \"drafts\" folder"
-  ;;
-  "u" )
-    t="Unpublish article"
-    st="\"status: d\" in \"posts\" folder"
-  ;;
-  "o" )
-    t="Open website"
-    st="Open in brower"
-  ;;
-  "conf" )
-    t="Open '_config,yml'"
-    st="with default editor"
-  ;;
-  "dg"|"gd" )
-    cmd="dg"
-    t="Generate and Deploy contents"
-    st="No options"
-  ;;
-  "g"|"generate" )
-    t="Generate contents"
-    st="Options: -d, --deploy, -w, --watch"
-  ;;
-  "s"|"server" )
-    t="Run local server (at http://localhost:4000/)"
-    st="Options: -p, --port, -s, --static, -l, --log, -d, --drafts"
-  ;;
-  "d"|"deploy" )
-    t="Deploy contents"
-    st="Options: --setup, -g, --generate, -m, --message"
-  ;;
-  "r"|"render" )
-    cmd="render"
-    t="Renders files"
-    st="Options:  &amp;lt;file1&amp;gt; [file2] -o, --output"
-  ;;
-  "m"|"migrate" )
-    cmd="migrate"
-    t="Migrates content from other blog systems"
-    st="Options: &amp;lt;type&amp;gt;"
-  ;;
-  "c"|"clean" )
-    cmd="clean"
-    t="Delete all generated files"
-    st="No options"
-  ;;
-  # Replaced or unassumed commands
-  # "l"|"list" )
-  #   cmd="list"
-  #   t="Lists all routes"
-  #   st="Options: &amp;lt;type&amp;gt;"
-  # ;;
-  # "v"|"version" )
-  #   cmd="version"
-  #   t="Displays version information"
-  #   st="No options"
-  # ;;
-  # "init" )
-  #   t="Initializes a website"
-  #   st="Options: [folder]"
-  # ;;
-  # "new" )
-  #   t="Creates a new article"
-  #   st="Options: [layout] &amp;lt;title&amp;gt;"
-  # ;;
-  # "p"|"publish" )
-  #   t="Publishes a draft"
-  #   st="Options: [layout] &amp;lt;filename&amp;gt;"
-  # ;;
-  "tag" )
-    t="Search Hexo existing Tags or Categories"
-    st="Input a Tags or Categories"
-  ;;
-  *   )
-    t="Undefined command"
-    st="Reference to Help: (hexo)h"
-  ;;
-esac
-
-if [ "$cmd" = tag -a -n "$arg" ];then
-
-# Path of your hexo project folder
-dir=`sed -n 2p Config | sed "s%~%$HOME%"`
-
-cd $dir/source/_posts
-q=$arg
-IFS=$'\n'
-
-tags=()
-while read tag
-  do tags+=("$tag")
-done &lt; &lt;(
-  for file in `ls`
-    do sed '/^---$/q' "$file" | grep '^- ' | sed 's/^- //'
-  done | sort -u)
-
-cat &lt;&lt; EOB
-&lt;?xml version="1.0"?&gt;
-    &lt;items&gt;
-EOB
-
-for i in `echo "${tags[*]}" | grep -i "$q"`
-do
-  i=`echo "${i}" | sed -e 's/&amp;/\&amp;amp;/g' -e 's/&lt;/\&amp;lt;/g' -e 's/&gt;/\&amp;gt;/g' -e "s/'/\&amp;apos;/g" -e 's/"/\&amp;quot;/g'`
-  cat &lt;&lt; EOB
-&lt;item uid="${i}" arg="tag ${i}" valid="YES" &gt;
-    &lt;title&gt;(^) Copy: ${i}&lt;/title&gt;
-&lt;/item&gt;
-EOB
-done
-
-echo "&lt;/items&gt;"
-
-else
-
-cat &lt;&lt; EOB
-&lt;?xml version="1.0"?&gt;
-  &lt;items&gt;
-    &lt;item uid="hexo" arg="$cmd $arg" valid="YES" &gt;
-      &lt;title&gt;(^) Hexo: ${t}&lt;/title&gt;
-      &lt;subtitle&gt;${st}&lt;/subtitle&gt;
-      &lt;subtitle mod="ctrl"&gt;Enter to act&lt;/subtitle&gt;
-    &lt;/item&gt;
-  &lt;/items&gt;
-EOB
-
-fi</string>
+				<string>./hx.sh "{query}"</string>
 				<key>subtext</key>
 				<string>Manage Hexo projext</string>
 				<key>title</key>
@@ -325,119 +177,7 @@ fi</string>
 				<key>escaping</key>
 				<integer>126</integer>
 				<key>script</key>
-				<string>dir=`sed -n 2p Config | sed "s%~%$HOME%"`
-editor=`sed -n 5p Config`
-terminal=`sed -n 8p Config`
-url=`sed -n 11p Config`
-PATH=$PATH:/usr/local/bin
-q="{query}"
-read cmd arg &lt;&lt;&lt; "$q"
-
-cd $dir
-
-Create () {
-file="${savedir}${today}${title}.md"
-cat &lt;&lt; EOB &gt; "$file"
-title: $arg
-date: $date
-pid: $key
-status: $status
-tags:
-- 
----
-EOB
-open -a $editor "$file"
-echo -n "Created: \"$title\""
-}
-
-case "$cmd" in
-  "t" )
-    open -a $terminal $dir
-    echo "Openen: Project folder in terminal"
-  ;;
-  [nb] )
-    title=`echo "$arg" | sed -e 's/ /-/g' -e 's/[\.\/]//g'`
-    key=`md5 -qs "$title"`
-    if [ $cmd = n ];then
-      savedir=source/_posts/
-      date="`date '+%Y-%m-%d %H:%M'`"
-      today="`date '+%Y-%m-%d'`-"
-      status=p
-    else
-      savedir=source/_drafts/
-      date=""
-      today=""
-      status=d
-    fi
-    if [ -z $arg ];then
-      echo -n "ERROR: Input title"
-    else
-      Create
-    fi
-  ;;
-  "p" )
-    cd source/_drafts
-    num=`grep -l '^status: p$' *.md | wc -l`
-    for file in `grep -l '^status: p$' *.md`
-    do
-    title=`grep -m1 'title:' $file | cut -c 8- | sed -e 's/ /-/g' -e 's/[\.\/]//g'`
-    cat $file | (rm $file; sed -e "s/^date: .*$/date: `date '+%Y-%m-%d %H:%M'`/" &gt; $file)
-    mv $file ../_posts/`date '+%Y-%m-%d'`-$title.md
-    done
-    echo -n "Published: $num articles"
-  ;;
-  "u" )
-    cd source/_posts
-    num=`grep -l '^status: d$' *.md | wc -l`
-    for file in `grep -l '^status: d$' *.md`
-    do
-    name=`echo $file | cut -c 12-`
-    cat $file | (rm $file; sed 's/^\(date: \).*$/\1/' &gt; $file)
-    mv $file ../_drafts/$name
-    done
-    echo -n "Unpublished: $num articles"
-  ;;
-  "o" )
-    open $url
-    echo -n "Opened: Website"
-  ;;
-  "conf" )
-    open _config.yml
-    echo -n "Opened: '_config.yml'"
-  ;;
-  "h" )
-    open https://github.com/catfist/Alfred-MyHexo
-    echo -n "Opened: Github project page"
-  ;;
-  "g"|"generate"|"d"|"deploy"|"render"|"migrate"|"clean" )
-    hexo $q &gt;&amp; /dev/null
-    echo -n "Done: hexo ${q}"
-  ;;
-  "s"|"server" )
-    tmp=/tmp/$$myhexoterm
-    {
-    echo "#!/bin/bash" &gt; ${tmp}
-    echo "cd $dir" &gt;&gt; ${tmp}
-    echo "hexo $q" &gt;&gt; ${tmp}
-    chmod +x ${tmp}
-    } &amp;&amp; {
-    open -a $terminal ${tmp}
-    } &amp;&amp; {
-    sleep 5
-    rm ${tmp}
-    echo -n "Hexo server is running"
-    }
-  ;;
-  "dg" )
-    hexo d -g &gt;&amp; /dev/null
-    open $url
-    echo "Contents Deployed"
-  ;;
-  "tag" )
-    echo "$arg" | pbcopy
-    echo "Copied: $arg"
-  ;;
-esac</string>
+				<string>./hxrun.sh "{query}"</string>
 				<key>type</key>
 				<integer>0</integer>
 			</dict>
@@ -561,17 +301,7 @@ esac</string>
 				<key>escaping</key>
 				<integer>123</integer>
 				<key>script</key>
-				<string># Change each variables to suit your '_config.yml'.
-
-baseurl=`sed -n 11p Config`
-
-file="{query}"
-title=`grep -m1 '^title' $file | cut -c 8-`
-date=`grep -m1 '^date' $file | sed 's/-/\//g' | cut -c 7-16`
-pid=`grep -m1 '^pid' $file | sed 's/^pid: //'`
-link="[${title} | 豆腐メンタルは崩れない](${baseurl}${date}/${pid})"
-
-echo -n "${link}"</string>
+				<string>./cplink.sh "{query}"</string>
 				<key>type</key>
 				<integer>0</integer>
 			</dict>
@@ -588,16 +318,7 @@ echo -n "${link}"</string>
 				<key>escaping</key>
 				<integer>123</integer>
 				<key>script</key>
-				<string># Change each variables to suit your '_config.yml'.
-
-baseurl=`sed -n 11p Config`
-
-file="{query}"
-date=`grep -m1 '^date' $file | sed 's/-/\//g' | cut -c 7-16`
-pid=`grep -m1 '^pid' $file | sed 's/^pid: //'`
-url="${baseurl}/${date}/${pid}"
-
-open ${url}</string>
+				<string>./oplink.sh "{query}"</string>
 				<key>type</key>
 				<integer>0</integer>
 			</dict>
@@ -703,21 +424,7 @@ open ${url}</string>
 				<key>escaping</key>
 				<integer>126</integer>
 				<key>script</key>
-				<string>cat &lt;&lt; EOB &gt; Config
-# Path of your hexo project folder
-~/heroku/wbtmiu.herokuapp.com
-
-# Your favorite editor
-FoldingText
-
-# Your favorite Terminal emulator
-iterm
-
-# Your site URL
-http://wbtmiu.herokuapp.com
-EOB
-
-open Config</string>
+				<string>./lxsetuprun.sh "{query}"</string>
 				<key>type</key>
 				<integer>0</integer>
 			</dict>
