@@ -1,3 +1,4 @@
+#!/bin/bash
 dir=`sed -n 2p Config | sed "s%~%$HOME%"`
 editor=`sed -n 5p Config`
 terminal=`sed -n 8p Config`

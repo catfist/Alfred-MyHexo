@@ -1,6 +1,7 @@
+#!/bin/bash
 cat << EOB > Config
 # Path of your hexo project folder
-~/heroku/wbtmiu.herokuapp.com
+~/heroku/wbtmiu
 
 # Your favorite editor
 FoldingText
