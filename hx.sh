@@ -1,4 +1,3 @@
-#!/bin/bash
 read cmd arg <<< "$1"
 
 case "$cmd" in

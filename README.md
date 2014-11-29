@@ -28,26 +28,26 @@ Change each variables to suit your '_config.yml'.
 * dir: Path of your hexo project folder
 
 ## Usage
-| Alfred text     | Commands                                                   | Options (&lt;\*&gt;:Required / [\*],-\*,--\*:Optional) |
-| --------------- | ------------------------------------------------------     | ------------------------------------------------------ |
-| hx              | Open Hexo project folder in Terminal                       |                                                        |
-| hxn             | Create new article                                         | &lt;title&gt;                                          |
-| hxb             | Create draft (blueprint)                                   | &lt;title&gt;                                          |
-| hxp             | Publish drafts  ('status: p' in 'drafts' folder)           |                                                        |
-| hxu             | Unpublish article  ('status: d' in 'posts' folder)         |                                                        |
-| hxo             | Open website in default brower                             |                                                        |
-| hxconf          | Open '_config,yml'  (with default editor)                  |                                                        |
-| hxh             | Reference to Help                                          |                                                        |
-| hxg(generate)   | Generate contents                                          | -d, --deploy, -w, --watch                              |
-| hxd(deploy)     | Deploy contents                                            | --setup, -g, --generate, -m, --message                 |
-| hxs(server)     | Run local server (at http://localhost:4000/)               | -p, --port, -s, --static, -l, --log, -d, --drafts      |
-| hxr(render)     | Renders files                                              | &lt;file1&gt; [file2] -o, --output                     |
-| hxm(migrate)    | Migrates content from other blog systems                   | &lt;type&gt;                                           |
-| hxc(clean)      | Delete all generated files                                 |                                                        |
-| hxtag           | Search &amp; Copy Tag or Categories from existing articles | &lt;word&gt;                                           |
-| h:f             | Find folder with file names                                | (ctrl):Copy Markdown link (Shift): Open URL            |
-| h:s             | Search folder with file contents                           | (ctrl):Copy Markdown link (Shift): Open URL            |
-| hxdg,hxgd       | Generate &amp; Deploy contents &amp; Open Site             |                                                        |
+| Alfred text     | Commands                                               | Options (&lt;\*&gt;:Required / [\*],-\*,--\*:Optional) |
+| --------------- | ------------------------------------------------------ | ------------------------------------------------------ |
+| hx              | Open Hexo project folder in Terminal                   |                                                        |
+| hxn             | Create new article                                     | &lt;title&gt;                                          |
+| hxb             | Create draft (blueprint)                               | &lt;title&gt;                                          |
+| hxp             | Publish drafts  ('status: p' in 'drafts' folder)       |                                                        |
+| hxu             | Unpublish article  ('status: d' in 'posts' folder)     |                                                        |
+| hxo             | Open website in default brower                         |                                                        |
+| hxconf          | Open '_config,yml'  (with default editor)              |                                                        |
+| hxh             | Reference to Help                                      |                                                        |
+| hxg(generate)   | Generate contents                                      | -d, --deploy, -w, --watch                              |
+| hxd(deploy)     | Deploy contents                                        | --setup, -g, --generate, -m, --message                 |
+| hxs(server)     | Run & open local server (at http://localhost:4000/)    | -p, --port, -s, --static, -l, --log, -d, --drafts      |
+| hxr(render)     | Renders files                                          | &lt;file1&gt; [file2] -o, --output                     |
+| hxm(migrate)    | Migrates content from other blog systems               | &lt;type&gt;                                           |
+| hxc(clean)      | Delete all generated files                             |                                                        |
+| hxtag           | Search & Copy Tag or Categories from existing articles | &lt;word&gt;                                           |
+| h:f             | Find folder with file names                            | (ctrl):Copy Markdown link (Shift): Open URL            |
+| h:s             | Search folder with file contents                       | (ctrl):Copy Markdown link (Shift): Open URL            |
+| hxdg,hxgd       | Generate & Deploy contents & Open Site                 |                                                        |
 
 ## Hexo custom arguments
 ### pid

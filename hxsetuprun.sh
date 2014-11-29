@@ -1,4 +1,3 @@
-#!/bin/bash
 cat << EOB > Config
 # Path of your hexo project folder
 ~/heroku/wbtmiu

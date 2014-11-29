@@ -262,7 +262,8 @@
 				<string>h:s</string>
 				<key>scopes</key>
 				<array>
-					<string>~/heroku/wbtmiu.herokuapp.com/source/_posts</string>
+					<string>~/heroku/wbtmiu/source/_drafts</string>
+					<string>~/heroku/wbtmiu/source/_posts</string>
 				</array>
 				<key>subtext</key>
 				<string>'_posts' and '_drafts'</string>
@@ -381,7 +382,8 @@
 				<string>h:f</string>
 				<key>scopes</key>
 				<array>
-					<string>~/heroku/wbtmiu.herokuapp.com/source/_posts</string>
+					<string>~/heroku/wbtmiu/source/_drafts</string>
+					<string>~/heroku/wbtmiu/source/_posts</string>
 				</array>
 				<key>title</key>
 				<string>Find articles by title</string>
@@ -424,7 +426,7 @@
 				<key>escaping</key>
 				<integer>126</integer>
 				<key>script</key>
-				<string>./lxsetuprun.sh "{query}"</string>
+				<string>./hxsetuprun.sh</string>
 				<key>type</key>
 				<integer>0</integer>
 			</dict>

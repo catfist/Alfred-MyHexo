@@ -1,4 +1,3 @@
-#!/bin/bash
 # Change each variables to suit your '_config.yml'.
 
 baseurl=`sed -n 11p Config`
