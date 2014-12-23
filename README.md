@@ -24,9 +24,6 @@ Add your 'source' folder to Search Scope.
 ### Two '/bin/bash' Script action (Next to 'h:s' & 'h:f' File Filter)
 Change each variables to suit your '_config.yml'.
 
-### 'htag' Script Filter
-* dir: Path of your hexo project folder
-
 ## Usage
 | Alfred text     | Commands                                               | Options (&lt;\*&gt;:Required / [\*],-\*,--\*:Optional) |
 | --------------- | ------------------------------------------------------ | ------------------------------------------------------ |

@@ -262,8 +262,8 @@
 				<string>h:s</string>
 				<key>scopes</key>
 				<array>
-					<string>~/heroku/wbtmiu/source/_drafts</string>
-					<string>~/heroku/wbtmiu/source/_posts</string>
+					<string>~/ghq/heroku.com/catfist/wbtmiu/source/_drafts</string>
+					<string>~/ghq/heroku.com/catfist/wbtmiu/source/_posts</string>
 				</array>
 				<key>subtext</key>
 				<string>'_posts' and '_drafts'</string>
@@ -382,8 +382,8 @@
 				<string>h:f</string>
 				<key>scopes</key>
 				<array>
-					<string>~/heroku/wbtmiu/source/_drafts</string>
-					<string>~/heroku/wbtmiu/source/_posts</string>
+					<string>~/ghq/heroku.com/catfist/wbtmiu/source/_drafts</string>
+					<string>~/ghq/heroku.com/catfist/wbtmiu/source/_posts</string>
 				</array>
 				<key>title</key>
 				<string>Find articles by title</string>
