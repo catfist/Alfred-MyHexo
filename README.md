@@ -3,26 +3,29 @@ Alfred-MyHexo
 
 Alfred Workflow for manage Hexo project.
 
-![screenshot](http://cl.ly/YGYn/Image%202014-10-29%20at%209.42.47%20%E5%8D%88%E5%BE%8C.png)
+![screenshot](http://cl.ly/Z9T9/Image%202015-01-02%20at%207.39.06%20%E5%8D%88%E5%BE%8C.png)
 
-# Workflow to manage your Hexo blog
+## Workflow to manage your Hexo blog
 
 This workflow has attracted a command for managing your Hexo blog.
 
-## Setup
-Input your info to some variables and 'source' folder.
+## Install
+Download package from 'Release' tab.
 
-### '/bin/bash' Script action (Next to 'hx' Script Filter)
-* dir: Path of your hexo project folder
-* editor: Name of your favorite editor
-* terminal: Name of your favorite Terminal emulator
-* url: URL of your site
+Or, clone this repository in your Alfred Workflow directory.
+
+
+## Setup
+### Variables
+Run 'hxsetup' and input your informaons to 'Config' file.
+
+* Path of your hexo project folder
+* Name of your favorite editor
+* Name of your favorite Terminal emulator
+* URL of your site
 
 ### 'h:s' & 'h:f' File Filter
 Add your 'source' folder to Search Scope.
-
-### Two '/bin/bash' Script action (Next to 'h:s' & 'h:f' File Filter)
-Change each variables to suit your '_config.yml'.
 
 ## Usage
 | Alfred text     | Commands                                               | Options (&lt;\*&gt;:Required / [\*],-\*,--\*:Optional) |
@@ -41,10 +44,10 @@ Change each variables to suit your '_config.yml'.
 | hxr(render)     | Renders files                                          | &lt;file1&gt; [file2] -o, --output                     |
 | hxm(migrate)    | Migrates content from other blog systems               | &lt;type&gt;                                           |
 | hxc(clean)      | Delete all generated files                             |                                                        |
-| hxtag           | Search & Copy Tag or Categories from existing articles | &lt;word&gt;                                           |
 | h:f             | Find folder with file names                            | (ctrl):Copy Markdown link (Shift): Open URL            |
 | h:s             | Search folder with file contents                       | (ctrl):Copy Markdown link (Shift): Open URL            |
 | hxdg,hxgd       | Generate & Deploy contents & Open Site                 |                                                        |
+| hxsetup         | Create & open 'Config' file                            |                                                        |
 
 ## Hexo custom arguments
 ### pid
